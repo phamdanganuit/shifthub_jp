@@ -55,5 +55,19 @@ if Rails.env.development?
     )
   end
 
-  Annotate.load_tasks
+  Rake::Task.define_task annotate: :environment do
+    # Load the options we set above
+    Rake::Task['set_annotation_options'].invoke
+
+    # Manually invoke the model and route annotation tasks
+    puts 'Annotating models...'
+    Annotate::Models.new.do_annotations
+    puts 'Annotating routes...'
+    Annotate::Routes.new.do_annotations
+  end
+
+  # Hook into db:migrate
+  Rake::Task['db:migrate'].enhance do
+    Rake::Task['annotate'].invoke
+  end
 end
