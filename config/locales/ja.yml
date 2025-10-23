@@ -1,0 +1,54 @@
+# config/locales/ja.yml
+ja:
+  hello: "こんにちは、世界" # ví dụ
+
+  devise:
+    omniauth_callbacks:
+      success: "%{kind}アカウントでログインしました。" # Dịch: Đăng nhập thành công với tài khoản %{kind}.
+    sessions:
+      new:
+        title: "ログイン"
+        email: "メールアドレス"
+        password: "パスワード"
+    registrations:
+      new:
+        title: "新規登録"
+        password_minimum: "最低%{number}文字"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認用）"
+    passwords:
+      new:
+        title: "パスワードをお忘れですか？"
+        submit: "パスワード再設定用の手順を送信"
+      edit:
+        title: "パスワードの変更"
+        submit: "パスワードを変更"
+    shared:
+      links:
+        forgot_password: "パスワードをお忘れですか？"
+        sign_in_with_provider: "%{provider}でログイン" # Dịch: Đăng nhập với %{provider}
+
+  navbar:
+    brand: "シフトハブJP"
+    sign_in: "ログイン"
+    sign_up: "新規登録"
+    sign_out: "ログアウト"
+    switch_to_japanese: "日本語に切り替える"
+    switch_to_english: "英語に切り替える"
+  helpers:
+    submit:
+      user:
+        create: "アカウント作成"
+    label:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認用）"
+        remember_me: "ログイン状態を保存"
+  activerecord:
+    attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認用）"

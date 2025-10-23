@@ -1,21 +1,26 @@
+# config/routes.rb
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-  omniauth_callbacks: 'users/omniauth_callbacks'
+
+  # 1. Handle OmniAuth callbacks OUTSIDE of the locale scope.
+  # This route definition will handle URLs like /users/auth/google_oauth2/callback
+  devise_for :users, only: :omniauth_callbacks, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  root "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  # 2. Wrap all other routes, including the rest of Devise's routes,
+  # inside the dynamic locale scope.
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+    
+    # This will handle locale-scoped URLs like /en/users/sign_in
+    devise_for :users, skip: :omniauth_callbacks, controllers: {
+      # We still need to specify other controllers if we customize them later
+      # For now, this is enough.
+    }
 
-  # Render dynamic PWA files from app/views/pwa/*
-  get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+    # ==> APPLICATION ROUTES
+    root "pages#home"
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+    # Health check route
+    get "up" => "rails/health#show", as: :rails_health_check
+  end
 end
-
-# == Route Map
-#

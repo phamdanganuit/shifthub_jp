@@ -1,0 +1,90 @@
+@import "custom";
+
+body {
+  background-color: #f0f0f0;
+  color: #333;
+  font-family: sans-serif;
+}
+
+h1 {
+  color: #007bff;
+}
+
+.konbini-bg {
+  background-color: #f0f8ff; /* AliceBlue, a light, friendly color */
+}
+
+.konbini-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 2.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.konbini-title {
+  font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+  color: #2a3a4a;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.konbini-field {
+  margin-bottom: 1.5rem;
+}
+
+.konbini-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.konbini-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.konbini-button {
+  width: 100%;
+  background-color: #ff6347; /* Tomato Red */
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.konbini-button:hover {
+  background-color: #e5533d;
+}
+
+.konbini-link {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.konbini-link:hover {
+  text-decoration: underline;
+}
+
+.konbini-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.konbini-oauth-button {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.konbini-oauth-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}

@@ -1,0 +1,38 @@
+<%# app/views/layouts/_navbar.html.erb %>
+<header class="bg-gray-800 text-white">
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <%= link_to t('navbar.brand'), root_path, class: "font-bold text-xl" %>
+
+    <%# Sửa đổi bắt đầu từ đây %>
+    <div class="flex items-center space-x-4">
+
+      <%# 1. Language switcher with external flag images %>
+      <div>
+        <% if I18n.locale == :en %>
+          <%# Show Japan flag, links to Japanese %>
+          <%= link_to({ locale: 'ja' }, class: "flex items-center", title: t('navbar.switch_to_japanese')) do %>
+            <%= image_tag "https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/gb.svg", class: "w-8 h-auto rounded-sm border border-gray-400" %>
+          <% end %>
+        <% else %>
+          <%# Show UK flag, links to English %>
+          <%= link_to({ locale: 'en' }, class: "flex items-center", title: t('navbar.switch_to_english')) do %>
+            <%= image_tag "https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/jp.svg", class: "w-8 h-auto rounded-sm border border-gray-400" %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# 2. Giữ nguyên logic đăng nhập/đăng xuất %>
+      <div class="flex items-center space-x-4">
+        <% if user_signed_in? %>
+          <span><%= current_user.email %></span>
+          <%= button_to t('navbar.sign_out'), destroy_user_session_path, method: :delete, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-28 text-center" %>
+        <% else %>
+          <%= link_to t('navbar.sign_in'), new_user_session_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-28 text-center" %>
+        <% end %>
+      </div>
+
+    </div>
+    <%# Sửa đổi kết thúc ở đây %>
+
+  </nav>
+</header>
