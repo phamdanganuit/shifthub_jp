@@ -1,0 +1,22 @@
+# config/database.yml
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: an
+  password: <%= ENV.fetch("PG_PASSWORD") { 'dangan123' } %> # <-- THAY ĐỔI MẬT KHẨU CỦA BẠN VÀO ĐÂY
+
+development:
+  <<: *default
+  database: shifthub_jp_development
+
+test:
+  <<: *default
+  database: shifthub_jp_test
+
+production:
+  <<: *default
+  database: shifthub_jp_production
+  username: shifthub_jp
+  password: <%= ENV["SHIFTHUB_JP_DATABASE_PASSWORD"] %>
