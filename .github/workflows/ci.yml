@@ -64,11 +64,10 @@ jobs:
           - 5432:5432
         options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
 
-    # === BỔ SUNG BIẾN MÔI TRƯỜNG CHUNG CHO JOB ===
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://postgres:postgres@localhost:5432/shifthub_jp_test" # Thêm tên DB cho rõ ràng
-      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }} # <-- BỔ SUNG QUAN TRỌNG NHẤT
+      DATABASE_URL: "postgres://postgres:postgres@localhost:5432/shifthub_jp_test"
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
 
     steps:
       - name: Install packages
@@ -83,12 +82,15 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      # === THAY ĐỔI CÁCH CHẠY TEST ===
+      # === BƯỚC MỚI ĐÃ ĐƯỢC THÊM VÀO ĐÂY ===
+      - name: Build Tailwind CSS
+        run: bin/rails tailwindcss:build
+
       - name: Prepare database
         run: bin/rails db:prepare
 
       - name: Run RSpec tests
-        run: bundle exec rspec # <-- SỬA: Chạy RSpec thay vì `rails test`
+        run: bundle exec rspec
 
       # Phần upload artifact giữ nguyên
       - name: Keep screenshots from failed system tests
