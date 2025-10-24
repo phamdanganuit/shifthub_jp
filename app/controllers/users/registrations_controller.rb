@@ -21,7 +21,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
       # Here is the custom part
-      flash[:error] = resource.errors.full_messages.join(', ')
+      flash[:error] = resource.errors.full_messages.join(", ")
       respond_with resource
     end
   end
