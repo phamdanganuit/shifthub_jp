@@ -6,15 +6,19 @@ ja:
     omniauth_callbacks:
       success: "%{kind}アカウントでログインしました。" # Dịch: Đăng nhập thành công với tài khoản %{kind}.
     sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
       new:
         title: "ログイン"
         email: "メールアドレス"
         password: "パスワード"
     registrations:
+      signed_up: "アカウント登録が完了しました。"
       new:
         title: "新規登録"
         password_minimum: "最低%{number}文字"
         email: "メールアドレス"
+        display_name: "表示名"
         password: "パスワード"
         password_confirmation: "パスワード（確認用）"
     passwords:
@@ -28,6 +32,14 @@ ja:
       links:
         forgot_password: "パスワードをお忘れですか？"
         sign_in_with_provider: "%{provider}でログイン" # Dịch: Đăng nhập với %{provider}
+    failure:
+      unauthenticated: "ログインまたは新規登録をしてください。"
+      invalid: "メールアドレスまたはパスワードが違います。"
+      not_found_in_database: "メールアドレスまたはパスワードが違います。"
+      inactive: "アカウントがまだ有効化されていません。"
+      locked: "あなたのアカウントはロックされています。"
+      last_attempt: "あなたのアカウントがロックされる前に、もう一度試すことができます。"
+      already_authenticated: "すでにログインしています。"
 
   navbar:
     brand: "シフトハブJP"

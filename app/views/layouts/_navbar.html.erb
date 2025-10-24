@@ -24,7 +24,7 @@
       <%# 2. Giữ nguyên logic đăng nhập/đăng xuất %>
       <div class="flex items-center space-x-4">
         <% if user_signed_in? %>
-          <span><%= current_user.email %></span>
+          <span><%= current_user.display_name %></span>
           <%= button_to t('navbar.sign_out'), destroy_user_session_path, method: :delete, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-28 text-center" %>
         <% else %>
           <%= link_to t('navbar.sign_in'), new_user_session_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-28 text-center" %>

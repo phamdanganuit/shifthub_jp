@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     # This will handle locale-scoped URLs like /en/users/sign_in
     devise_for :users, skip: :omniauth_callbacks, controllers: {
+      registrations: "users/registrations"
       # We still need to specify other controllers if we customize them later
       # For now, this is enough.
     }

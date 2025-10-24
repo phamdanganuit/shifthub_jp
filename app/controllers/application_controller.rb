@@ -2,7 +2,16 @@
 class ApplicationController < ActionController::Base
   # This callback will run before any action in any controller.
   before_action :set_locale
+  before_action :configure_permitted_parameters, if: :devise_controller?
   layout :layout_by_resource
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:display_name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:display_name])
+  end
+
   private
 
   def set_locale
