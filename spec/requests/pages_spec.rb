@@ -1,11 +1,11 @@
+# spec/requests/pages_spec.rb
 require 'rails_helper'
 
 RSpec.describe "Pages", type: :request do
-  describe "GET /home" do
-    it "returns http success" do
-      get "/pages/home"
+  describe "GET /" do
+    it "returns a successful response" do
+      get root_path
       expect(response).to have_http_status(:success)
     end
   end
-
 end

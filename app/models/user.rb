@@ -16,12 +16,11 @@ class User < ApplicationRecord
         # Nếu provider (LINE) không trả về email, thì tạo email giả
         user.email = "#{auth.uid}@line.placeholder.com" # Thêm .com cho giống email thật
       end
-      
+
       user.password = Devise.friendly_token[0, 20]
-      
+
       # user.name = auth.info.name   # assuming your user model has a name
       # user.image = auth.info.image # assuming your user model has an image
     end # Đây là end cho khối 'do |user|'
   end # Đây là end cho 'def self.from_omniauth'
-
 end # Đây là end cho 'class User'
